@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ── HEADER ── -->
+    <header class="header">
+      <div class="greeting-block">
+        <p id="greeting-text" class="greeting-text">Good morning!</p>
+        <h1 id="greeting-name" class="greeting-name">Loading...</h1>
+        <p id="datetime-text" class="datetime-text"></p>
+      </div>
+
+      <div class="header-controls">
+        <!-- Theme toggle -->
+        <button id="theme-toggle" class="icon-btn" title="Toggle light / dark mode" aria-label="Toggle theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+        <!-- Name edit -->
+        <button id="name-edit-btn" class="icon-btn" title="Change your name" aria-label="Edit name">✏️</button>
+      </div>
+    </header>
+
+    <!-- Name modal -->
+    <div id="name-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal">
+        <h2 id="modal-title">What's your name?</h2>
+        <input id="name-input" type="text" class="modal-input" placeholder="Enter your name…" maxlength="40" />
+        <div class="modal-actions">
+          <button id="name-save-btn" class="btn btn-primary">Save</button>
+          <button id="name-cancel-btn" class="btn btn-ghost">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MAIN GRID ── -->
+    <main class="grid">
+
+      <!-- Focus Timer -->
+      <section class="card timer-card" aria-labelledby="timer-heading">
+        <h2 id="timer-heading" class="card-title">Focus Timer</h2>
+
+        <div class="timer-display" aria-live="polite" aria-label="Timer">
+          <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+        </div>
+
+        <div class="timer-duration">
+          <label for="timer-duration-input" class="sr-only">Session duration (minutes)</label>
+          <input id="timer-duration-input" type="number" min="1" max="120" value="25" class="duration-input" title="Set session duration in minutes" />
+          <span class="duration-label">min session</span>
+        </div>
+
+        <div class="timer-controls">
+          <button id="timer-start" class="btn btn-primary">Start</button>
+          <button id="timer-stop"  class="btn btn-secondary" disabled>Stop</button>
+          <button id="timer-reset" class="btn btn-ghost">Reset</button>
+        </div>
+      </section>
+
+      <!-- To-Do List -->
+      <section class="card todo-card" aria-labelledby="todo-heading">
+        <h2 id="todo-heading" class="card-title">To-Do List</h2>
+
+        <form id="todo-form" class="todo-form" novalidate>
+          <input id="todo-input" type="text" class="todo-input" placeholder="Add a new task…" maxlength="120" autocomplete="off" aria-label="New task" />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <p id="duplicate-warning" class="warning-text hidden" role="alert">Task already exists!</p>
+
+        <div class="todo-toolbar">
+          <span id="todo-count" class="todo-count">0 tasks</span>
+          <select id="todo-sort" class="sort-select" aria-label="Sort tasks">
+            <option value="default">Sort: Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="done">Done last</option>
+          </select>
+        </div>
+
+        <ul id="todo-list" class="todo-list" aria-label="Task list"></ul>
+      </section>
+
+      <!-- Quick Links -->
+      <section class="card links-card" aria-labelledby="links-heading">
+        <h2 id="links-heading" class="card-title">Quick Links</h2>
+
+        <form id="link-form" class="link-form" novalidate>
+          <input id="link-name-input"  type="text"  class="link-input" placeholder="Label"         maxlength="30"  aria-label="Link label" />
+          <input id="link-url-input"   type="url"   class="link-input" placeholder="https://…"    maxlength="200" aria-label="Link URL" />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <div id="links-grid" class="links-grid" aria-label="Quick links"></div>
+      </section>
+
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
